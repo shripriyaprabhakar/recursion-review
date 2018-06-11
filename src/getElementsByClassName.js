@@ -5,6 +5,18 @@
 
 // But instead we're going to implement it from scratch:
 var getElementsByClassName = function(className , node) {
+  node = node || document.body;
+  var results = [];
+  if (node.classList.contains(className)) {
+    results.push(node);
+  } 
+  for (var i = 0; i < node.children.length; i++) {
+    var childNodesWithClassName = getElementsByClassName(className, node.children[i]);
+    results = results.concat(childNodesWithClassName);
+  }
+  return results;
+};
+
   // your code here
 /*
 i/p : classname string
@@ -24,14 +36,3 @@ edge cases: case where body element has no children
   // return results
 }
 */
-  node = node || document.body;
-  var results = [];
-  if (node.classList.indexOf(className) >= 0) {
-    results.push(node);
-  } 
-  for (var i = 0; i < node.children.length; i++) {
-    var childnodesArr = getElementsByClassName(className, node.children[i]);
-    results.concat(childnodesArr);
-  }
-  return results;
-};
