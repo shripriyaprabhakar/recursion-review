@@ -10,12 +10,6 @@ non white space. We keep searching until we find the first matching char.
 i/p = boolean, number, null
 "false", "true", "null", number
 
-" {"foo": null, "bar": 5}"
->> ""foo": null, "bar": 5"
->> foo
->> :
->> null
-
 */
 
 var JSONstring = function(str) {
@@ -23,46 +17,41 @@ var JSONstring = function(str) {
   this.current = 0;
 };
 
+// method to iterate over characters in JSON string 
 JSONstring.prototype.getNext = function() {
   return this.json.charAt(current++);
 };
 
-
-
 var parseJSON = function(json) {
-
-  var myJSON = new JSONstring(json);
+  // create JSONstring obj from json, unless its already a JSONstring
 
   // if json.nextChar() === '{' then parseObject
   // if json.nextChar() === '[' then parseArray
   // if json.nextChar() === '\"' then parseString
   // parsePrimitive
-
-
 };
 
 var parseObject = function(json) {
-  // takes in a json string that starts with '{'
+  // takes a json string with current character '{'
   // objToReturn = {};
-  //   
+  // cycle through object and parse each property, adding result to objToReturn
 
-
-  // return an object
+  // return objToReturn
 };
 
 var parseArray = function(json) {
-  // takes a json that starts with '['
+  // takes a json string with current character '['
   // arrToReturn = []
-  
+  // cycle through array and parse each element, adding result to arrToReturn
 
-  // return array
+  // return arrToReturn
 };
 
 var parseString = function(json) {
-  // takes in a json string that starts with '"'
+  // takes in a json string with current character '"'
   // strToReturn = '';
 
-  // return string
+  // return strToReturn
 };
 
 var parsePrimitive = function(json) {
